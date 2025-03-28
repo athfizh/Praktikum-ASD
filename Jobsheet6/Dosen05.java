@@ -8,7 +8,7 @@ public class Dosen05 {
     Dosen05() {
     }
 
-    Dosen05 (String kd, String name, boolean jk, int age) {
+    Dosen05(String kd, String name, boolean jk, int age) {
         kode = kd;
         nama = name;
         jenisKelamin = jk;
@@ -16,13 +16,13 @@ public class Dosen05 {
     }
 
     void tampilData() {
-        System.out.println("Kode Dosen : " + kode);
-        System.out.println("Nama Dosen : " + nama);
+        System.out.println("Kode          : " + kode);
+        System.out.println("Nama          : " + nama);
         if (jenisKelamin == true) {
             System.out.println("Jenis Kelamin : Wanita");
-        } else {
+        } else if (jenisKelamin == false) {
             System.out.println("Jenis Kelamin : Pria");
         }
-        System.out.println("Usia Dosen : " + usia);
+        System.out.println("Usia          : " + usia);
     }
 }
