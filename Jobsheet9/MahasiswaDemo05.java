@@ -44,9 +44,19 @@ public class MahasiswaDemo05 {
                     }
                     break;
                 case 4:
-                    System.out.println("\nDaftar semua tugas:");
-                    System.out.println("Nama\tNIM\tNilai");
+                    Mahasiswa05 lihatTerbawah = stack.peekBottom();
+                    if (lihatTerbawah != null) {
+                    System.out.println("Tugas pertama dikumpulkan oleh " + lihatTerbawah.nama);
+                    }
+                    break;
+                case 5:
+                    System.out.println("Daftar semua tugas");
+                    System.out.println("Nama\tNIM\tKelas");
                     stack.print();
+                    break;
+                case 6:
+                    int jumlahTugas = stack.jumlahTugas();
+                    System.out.println("jumlah tugas yang telah dikumpulkan : " + jumlahTugas);
                     break;
                 default:
                     System.out.println("Pilihan tidak valid.");
