@@ -10,8 +10,10 @@ public class MahasiswaDemo05 {
             System.out.println("\nMenu:");
             System.out.println("1. Mengumpulkan Tugas");
             System.out.println("2. Menilai Tugas");
-            System.out.println("3. Melihat Tugas Teratas");
-            System.out.println("4. Melihat Daftar Tugas");
+            System.out.println("3. Melihat Tugas Teratas (terakhir dikumpulkan)");
+            System.out.println("4. Melihat Tugas Terbawah (pertama dikumpulkan)");
+            System.out.println("5. Melihat Daftar Tugas");
+            System.out.println("6. Jumlah tugas yang dikumpulkan");
             System.out.print("Pilih: ");
             pilih = scan.nextInt();
             scan.nextLine();
@@ -35,6 +37,8 @@ public class MahasiswaDemo05 {
                         int nilai = scan.nextInt();
                         dinilai.tugasDinilai(nilai);
                         System.out.printf("Nilai Tugas %s adalah %d\n", dinilai.nama, nilai);
+                        String biner = stack.konversiDesimalKeBiner(nilai);
+                        System.out.println("Nilai Biner Tugas: " + biner);
                     }
                     break;
                 case 3:
