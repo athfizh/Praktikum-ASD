@@ -57,67 +57,40 @@ public class Queue {
             size = 0;
             System.out.println("Queue berhasil dikosongkan");
         } else {
+
             System.out.println("Queue masih kosong");
         }
     }
-
-    public boolean Enqueue(int dt) {
+    public void Enqueue(int dt) {
         if (IsFull()) {
-            System.out.println("Queue sudah penuh");
-            return false;
-        } else {
-            if (IsEmpty()) {
-                front = rear = 0;
-            } else {
-                if (rear == max - 1) {
-                    rear = 0;
-                } else {
-                    rear++;
-                }
-            }
-            data[rear] = dt;
-            size++;
-            return true;
+            System.out.println("Queue penuh");
+            System.out.println("Program dihentikan karena queue overflow!");
+            System.exit(1);
         }
+        if (IsEmpty()) {
+            front = rear = 0;
+        } else {
+            rear = (rear + 1) % max;
+        }
+        data[rear] = dt;
+        size++;
+        System.out.println(dt + " berhasil masuk ke antrian.");
     }
 
     public int Dequeue() {
-        int dt = 0;
         if (IsEmpty()) {
-            System.out.println("Queue masih kosong");
-        } else {
-            dt = data[front];
-            size--;
-            if (IsEmpty()) {
-                front = rear = -1;
-            } else {
-                if (front == max - 1) {
-                    front = 0;
-                } else {
-                    front++;
-                }
-            }
-        }
-        return dt;
-    }
-
-    public void safeEnqueue(int dt) {
-        if (IsFull()) {
-            System.out.println("Queue sudah penuh");
-            System.out.println("Program dihentikan karena queue overflow!");
-            System.exit(1);
-        } else {
-            Enqueue(dt);
-        }
-    }
-
-    public int safeDequeue() {
-        if (IsEmpty()) {
-            System.out.println("Queue masih kosong");
+            System.out.println("Queue kosong");
             System.out.println("Program dihentikan karena queue underflow!");
             System.exit(1);
             return -1;
         }
-        return Dequeue();
+        int dt = data[front];
+        size--;
+        if (IsEmpty()) {
+            front = rear = -1;
+        } else {
+            front = (front + 1) % max;
+        }
+        return dt;
     }
 }

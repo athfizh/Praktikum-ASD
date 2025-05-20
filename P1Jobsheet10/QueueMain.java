@@ -27,10 +27,10 @@ public class QueueMain {
                 case 1:
                     System.out.print("Masukkan data baru: ");
                     int dataMasuk = sc.nextInt();
-                    Q.safeEnqueue(dataMasuk);
+                    Q.Enqueue(dataMasuk);
                     break;
                 case 2:
-                    int dataKeluar = Q.safeDequeue();
+                    int dataKeluar = Q.Dequeue();
                     System.out.println("Data yang dikeluarkan: " + dataKeluar);
                     break;
                 case 3:
