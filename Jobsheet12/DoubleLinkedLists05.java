@@ -113,4 +113,131 @@ public class DoubleLinkedLists05 {
         }
         return null;
     }
+
+    public void add(Mahasiswa05 data, int index) {
+        if (index == 0) {
+            addFirst(data);
+            return;
+        }
+
+        Node05 temp = head;
+        for (int i = 0; i < index - 1; i++) {
+            if (temp == null) {
+                System.out.println("Index melebihi ukuran list.");
+                return;
+            }
+            temp = temp.next;
+        }
+        if (temp.next == null) {
+            addLast(data);
+        } else {
+            Node05 newNode = new Node05(data);
+            temp.next.prev = newNode;
+            newNode.next = temp.next;
+            temp.next = newNode;
+            newNode.prev = temp;
+        }        
+    }
+
+    public void removeAfter(String key) {
+        if (isEmpty()) {
+            System.out.println("List kosong, tidak bisa dihapus.");
+            return;
+        }
+
+        Node05 temp = head;
+
+        while (temp != null && !temp.data.nama.equalsIgnoreCase(key)) {
+            temp = temp.next;
+        }
+
+        if (temp == null || temp.next == null) {
+            System.out.println("Tidak ada node setelah " + key + " atau node tersebut adalah yang terakhir.");
+            return;
+        }
+
+        temp.next.prev = temp;
+        temp.next = temp.next.next;
+    }
+
+    public void remove(int index) {
+        if (isEmpty()) {
+            System.out.println("List kosong, tidak bisa dihapus.");
+            return;
+        }
+        
+        if (index < 0) {
+            System.out.println("Index tidak boleh negatif.");
+            return;
+        }
+
+        if (index == 0) {
+            removeFirst();
+            return;
+        }
+
+        Node05 temp = head;
+        for (int i = 0; i < index - 1; i++) {
+            if (temp == null) {
+                System.out.println("Index melebihi ukuran list.");
+                return;
+            }
+            temp = temp.next;
+        }
+
+        if (temp.next == tail) {
+            removeLast();
+        }
+        temp.next.prev = temp.prev;
+        temp.prev.next = temp.next;
+    }
+
+    Mahasiswa05 getFirst() {
+        if (isEmpty()) {
+            System.out.println("List kosong, tidak ada data yang bisa diambil.");
+            return null;
+        }
+        return head.data;
+    }
+
+    Mahasiswa05 getLast() {
+        if (isEmpty()) {
+            System.out.println("List kosong, tidak ada data yang bisa diambil.");
+            return null;
+        }
+        return tail.data;
+    }
+
+    Mahasiswa05 getIndex(int index) {
+        if (isEmpty()) {
+            System.out.println("List kosong, tidak ada data yang bisa diambil.");
+            return null;
+        }
+        
+        if (index < 0) {
+            System.out.println("Index tidak boleh negatif.");
+            return null;
+        }
+
+        Node05 temp = head;
+        for (int i = 0; i < index; i++) {
+            if (temp == null) {
+                System.out.println("Index melebihi ukuran list.");
+                return null;
+            }
+            temp = temp.next;
+        }
+        return temp.data;
+    }
+
+    int getSize() {
+        int counter = 0;
+
+        Node05 temp = head;
+        while (temp != null) {
+            temp = temp.next;
+            counter++;
+        }
+        return counter;
+    }
 }

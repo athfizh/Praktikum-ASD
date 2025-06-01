@@ -28,21 +28,30 @@ public class DLLMain {
                 System.out.println("4. Hapus dari akhir");
                 System.out.println("5. Tampilkan data");
                 System.out.println("6. Cari Mahasiswa berdasarkan NIM");
-                System.out.println("7. Masukkan data setelah NIM tertentu");
+                System.out.println("7. Tambah data setelah Mahasiswa tertentu");
+                System.out.println("8. Tambah data pada indeks tertentu");
+                System.out.println("9. Hapus data setelah Mahasiswa tertentu");
+                System.out.println("10. Hapus data pada indeks tertentu");
+                System.out.println("11. Tampilkan data pertama");
+                System.out.println("12. Tampilkan data terakhir");
+                System.out.println("13. Tampilkan data berdasarkan indeks");
+                System.out.println("14. Tampilkan ukuran list");
                 System.out.println("0. Keluar");
                 System.out.print("Pilih menu: ");
                 pilihan = sc.nextInt();
                 sc.nextLine();
 
                 switch (pilihan) {
-                    case 1:
-                        Mahasiswa05 mhs1 = inputMahasiswa();
-                        list.addFirst(mhs1);
+                    case 1: {
+                        Mahasiswa05 mhs = inputMahasiswa();
+                        list.addFirst(mhs);
                         break;
-                    case 2:
-                        Mahasiswa05 mhs2 = inputMahasiswa();
-                        list.addLast(mhs2);
+                    }
+                    case 2: {
+                        Mahasiswa05 mhs = inputMahasiswa();
+                        list.addLast(mhs);
                         break;
+                    }
                     case 3:
                         list.removeFirst();
                         break;
@@ -74,6 +83,59 @@ public class DLLMain {
                         } else {
                             System.out.println("NIM " + keyNim + " tidak ditemukan.");
                         }
+                        break;
+                    case 8: {
+                        Mahasiswa05 mhs = inputMahasiswa();
+                        System.out.print("Masukkan indeks untuk menambahkan data: ");
+                        int index = sc.nextInt();
+                        list.add(mhs, index);
+                        break;
+                    }
+                    case 9:
+                        System.out.println("Masukkan nama mahasiswa yang ingin dihapus setelahnya:");
+                        String hapusNama = sc.nextLine();
+                        list.removeAfter(hapusNama);
+                        break;
+                    case 10:
+                        System.out.print("Masukkan indeks yang ingin dihapus: ");
+                        int hapusIndex = sc.nextInt();
+                        list.remove(hapusIndex);
+                        break;
+                    case 11: {
+                        Mahasiswa05 mhs = list.getFirst();
+                        if (mhs != null) {
+                            System.out.println("Data Mahasiswa pertama: ");
+                            mhs.tampil();
+                        } else {
+                            System.out.println("List masih kosong.");
+                        }
+                        break;
+                    }
+                    case 12: {
+                        Mahasiswa05 mhs = list.getLast();
+                        if (mhs != null) {
+                            System.out.println("Data Mahasiswa terakhir: ");
+                            mhs.tampil();
+                        } else {
+                            System.out.println("List masih kosong.");
+                        }
+                        break;
+                    }
+                    case 13: {
+                        System.out.print("Masukkan indeks yang ingin ditampilkan: ");
+                        int index = sc.nextInt();
+                        Mahasiswa05 mhs = list.getIndex(index);
+                        if (mhs != null) {
+                            System.out.println("Data Mahasiswa pada indeks " + index + ": ");
+                            mhs.tampil();
+                        } else {
+                            System.out.println("Indeks " + index + " tidak ditemukan.");
+                        }
+                        break;
+                    }
+                    case 14:
+                        int size = list.getSize();
+                        System.out.println("Jumlah Mahasiswa : " + size);
                         break;
                     case 0:
                         System.out.println("Keluar dari program.");
