@@ -24,8 +24,8 @@ public class DLLMain {
                 System.out.println("\nMenu Double Linked List Mahasiswa");
                 System.out.println("1. Tambah di awal");
                 System.out.println("2. Tambah di akhir");
-                System.out.println("3. Hapus di awal");
-                System.out.println("4. Hapus di akhir");
+                System.out.println("3. Hapus dari awal");
+                System.out.println("4. Hapus dari akhir");
                 System.out.println("5. Tampilkan data");
                 System.out.println("6. Cari Mahasiswa berdasarkan NIM");
                 System.out.println("7. Masukkan data setelah NIM tertentu");
