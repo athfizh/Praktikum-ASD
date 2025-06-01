@@ -92,7 +92,7 @@ public class DLLMain {
                         break;
                     }
                     case 9:
-                        System.out.println("Masukkan nama mahasiswa yang ingin dihapus setelahnya:");
+                        System.out.print("Masukkan nama mahasiswa yang ingin dihapus setelahnya: ");
                         String hapusNama = sc.nextLine();
                         list.removeAfter(hapusNama);
                         break;
