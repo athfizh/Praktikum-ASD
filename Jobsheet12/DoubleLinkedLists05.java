@@ -63,6 +63,10 @@ public class DoubleLinkedLists05 {
     }
 
     public void print() {
+        if (isEmpty()) {
+            System.out.println("Linked list masih kosong!");
+            return;
+        }
         Node05 current = head;
         while (current != null) {
             current.data.tampil();
