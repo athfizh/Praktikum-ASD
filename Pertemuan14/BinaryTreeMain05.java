@@ -4,10 +4,10 @@ public class BinaryTreeMain05 {
     public static void main(String[] args) {
         BinaryTree05 bst = new BinaryTree05();
 
-        bst.add(new Mahasiswa05("244160121", "Ali", "A", 3.57));
-        bst.add(new Mahasiswa05("244160221", "Badar", "B", 3.85));
-        bst.add(new Mahasiswa05("244160185", "Candra", "C", 3.21));
-        bst.add(new Mahasiswa05("244160220", "Dewi", "B", 3.54));
+        bst.addRekursif(new Mahasiswa05("244160121", "Ali", "A", 3.57));
+        bst.addRekursif(new Mahasiswa05("244160221", "Badar", "B", 3.85));
+        bst.addRekursif(new Mahasiswa05("244160185", "Candra", "C", 3.21));
+        bst.addRekursif(new Mahasiswa05("244160220", "Dewi", "B", 3.54));
 
         System.out.println("\nDaftar semua mahasiswa (in-order traversal) : ");
         bst.traverseInOrder(bst.root);
@@ -21,9 +21,9 @@ public class BinaryTreeMain05 {
         hasilCari = bst.find(3.22)?"Ditemukan" : "Tidak ditemukan";
         System.out.println(hasilCari);
 
-        bst.add(new Mahasiswa05("244160131", "Devi", "A", 3.72));
-        bst.add(new Mahasiswa05("244160205", "Ehsan", "P", 3.37));
-        bst.add(new Mahasiswa05("244160170", "Fizi", "B", 3.46));
+        bst.addRekursif(new Mahasiswa05("244160131", "Devi", "A", 3.72));
+        bst.addRekursif(new Mahasiswa05("244160205", "Ehsan", "P", 3.37));
+        bst.addRekursif(new Mahasiswa05("244160170", "Fizi", "B", 3.46));
 
         System.out.println("\nDaftar semua mahasiswa setelah penambahan 3 mahasiswa:");
         System.out.println("InOrder Traversal:");
@@ -37,5 +37,23 @@ public class BinaryTreeMain05 {
         bst.delete(3.57);
         System.out.println("\nDaftar semua mahasiswa setelah penghapusan 1 mahasiswa (in order traversal):");
         bst.traverseInOrder(bst.root);
+        System.out.println();
+
+        Mahasiswa05 ipkTerbesar = bst.cariMaxIPK();
+        if (ipkTerbesar != null) {
+            System.out.println("Mahasiswa dengan ipk terbesar : " + ipkTerbesar.nama + " dengan ipk " + ipkTerbesar.ipk);
+        } else {
+            System.out.println("Tidak ada mahasiswa dengan IPK terbesar (tree kosong).");
+        }
+        
+        Mahasiswa05 ipkTerkecil = bst.cariMinIPK();
+        if (ipkTerkecil != null) {
+            System.out.println("Mahasiswa dengan ipk terkecil : " + ipkTerkecil.nama + " dengan ipk " + ipkTerkecil.ipk);
+        } else {
+            System.out.println("Tidak ada mahasiswa dengan IPK terkecil (tree kosong).");
+        }
+        
+        System.out.println();
+        bst.tampilMahasiswaIPKdiAtas(3.4);
     }
 }

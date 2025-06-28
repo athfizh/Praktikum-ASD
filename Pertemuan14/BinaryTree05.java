@@ -36,6 +36,24 @@ public class BinaryTree05 {
             }
         }
     }
+
+    public void addRekursif(Mahasiswa05 mahasiswa) {
+        root = addRekursifHelper(root, mahasiswa);
+    }
+
+    private Node05 addRekursifHelper(Node05 node, Mahasiswa05 mahasiswa) {
+        if (node == null) {
+            return new Node05(mahasiswa);
+        }
+        
+        if (mahasiswa.ipk < node.mahasiswa.ipk) {
+            node.left = addRekursifHelper(node.left, mahasiswa);
+        } else {
+            node.right = addRekursifHelper(node.right, mahasiswa);
+        }
+        
+        return node;
+    }
     
     boolean find(double ipk) {
         boolean result = false;
@@ -51,6 +69,47 @@ public class BinaryTree05 {
             }
         }
         return result;
+    }
+
+    public Mahasiswa05 cariMinIPK() {
+        if (isEmpty()) {
+            System.out.println("Binary tree kosong");
+            return null;
+        }
+        
+        Node05 current = root;
+        while (current.left != null) {
+            current = current.left;
+        }
+        return current.mahasiswa;
+    }
+
+    public Mahasiswa05 cariMaxIPK() {
+        if (isEmpty()) {
+            System.out.println("Binary tree kosong");
+            return null;
+        }
+        
+        Node05 current = root;
+        while (current.right != null) {
+            current = current.right;
+        }
+        return current.mahasiswa;
+    }
+
+    public void tampilMahasiswaIPKdiAtas(double ipkBatas) {
+        System.out.println("Mahasiswa dengan IPK di atas " + ipkBatas + ":");
+        tampilMahasiswaIPKdiAtasHelper(root, ipkBatas);
+    }
+
+    private void tampilMahasiswaIPKdiAtasHelper(Node05 node, double ipkBatas) {
+        if (node != null) {
+            tampilMahasiswaIPKdiAtasHelper(node.left, ipkBatas);
+            if (node.mahasiswa.ipk > ipkBatas) {
+                node.mahasiswa.tampilInformasi();
+            }
+            tampilMahasiswaIPKdiAtasHelper(node.right, ipkBatas);
+        }
     }
 
     void traversePreOrder(Node05 node) {
@@ -96,7 +155,6 @@ public class BinaryTree05 {
             System.out.println("Binary tree kosong");
             return;
         }
-        //cari node (current) yang akan dihapus
         Node05 parent = root;
         Node05 current = root;
         boolean isLeftChild = false;
@@ -113,12 +171,10 @@ public class BinaryTree05 {
                 isLeftChild = false;
             }
         }
-        //penghapusan
         if (current == null) {
             System.out.println("Data tidak ditemukan");
             return;
         } else {
-            //jika tidak ada anak (leaf), maka node dihapus
             if (current.left == null && current.right == null) {
                 if (current == root) {
                     root = null;
@@ -129,7 +185,7 @@ public class BinaryTree05 {
                         parent.right = null;
                     }
                 }
-            } else if (current.left == null) { //jika hanya ada anak kanan
+            } else if (current.left == null) {
                 if (current == root) {
                     root = current.right;
                 } else {
@@ -139,7 +195,7 @@ public class BinaryTree05 {
                         parent.right = current.right;
                     }
                 }
-            } else if (current.right == null) { //jika hanya ada anak kiri
+            } else if (current.right == null) {
                 if (current == root) {
                     root = current.left;
                 } else {
@@ -149,7 +205,7 @@ public class BinaryTree05 {
                         parent.right = current.left;
                     }
                 }
-            } else { //jika ada dua anak
+            } else {
                 Node05 successor = getSuccessor(current);
                 System.out.println("Jika 2 anak, current = ");
                 successor.mahasiswa.tampilInformasi();
@@ -157,12 +213,12 @@ public class BinaryTree05 {
                     root = successor;
                 } else {
                     if (isLeftChild) {
-                        parent.left = successor; //set anak kiri dari parent
+                        parent.left = successor;
                     } else {
-                        parent.right = successor; //set anak kanan dari parent
+                        parent.right = successor;
                     }
                 }
-                successor.left = current.left; //set anak kiri dari successor
+                successor.left = current.left;
             }
         }
     }
