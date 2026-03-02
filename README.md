@@ -13,7 +13,7 @@ Algoritma & Struktur Data
 
 # 🧩 Praktikum ASD
 
-### *Algorithm & Data Structure Lab — Semester Repository*
+### *Algorithm & Data Structure — Semester Repository*
 
 <br/>
 
