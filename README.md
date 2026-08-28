@@ -11,7 +11,7 @@
 Algoritma & Struktur Data
 ```
 
-# 🧩 Praktikum ASD
+# Praktikum ASD
 
 ### *Algorithm & Data Structure — Semester Repository*
 
@@ -321,7 +321,5 @@ Java  ████████████████████████�
 <sub>🧩 Repository ini merupakan dokumentasi perjalanan belajar <b>Algoritma dan Struktur Data</b></sub>
 
 <br/>
-
-<sub>Made with ☕ Java & 🧠 Logic by <b>Athaulla Hafizh</b></sub>
 
 </div>
